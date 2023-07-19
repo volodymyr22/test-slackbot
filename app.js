@@ -62,37 +62,13 @@ const blocks = [
   },
 ];
 
-// const blocks = [
-//   {
-//     type: "section",
-//     text: {
-//       type: "mrkdwn",
-//       text: "Click the button below to register:",
-//     },
-//   },
-//   {
-//     type: "actions",
-//     elements: [
-//       {
-//         type: "button",
-//         text: {
-//           type: "plain_text",
-//           text: "Register",
-//           emoji: true,
-//         },
-//         action_id: "registration_button", // Add the action_id property to the button
-//       },
-//     ],
-//   },
-// ];
-
 const app = new App({
   logLevel: LogLevel.DEBUG,
   signingSecret: slackConfiguration.SLACK_SIGNING_SECRET,
   clientId: slackConfiguration.SLACK_CLIENT_ID,
   clientSecret: slackConfiguration.SLACK_CLIENT_SECRET,
   botId: slackConfiguration.SLACK_BOT_TOKEN,
-  // userId: slackConfiguration.SLACK_USER_TOKEN,
+  userId: slackConfiguration.SLACK_USER_TOKEN,
   installerOptions: {
     stateVerification: false,
   },
@@ -167,12 +143,12 @@ async function sendMessageToDM(userId, channelId, messageText, client) {
   }
 }
 
-function generateRegistrationLink(userId) {
-  const registrationToken = uuidv4(); // Generate a unique registration token using UUID v4
-  const registrationLink = `https://your-domain.com/register/${registrationToken}?userId=${userId}`;
+// function generateRegistrationLink(userId) {
+//   const registrationToken = uuidv4(); // Generate a unique registration token using UUID v4
+//   const registrationLink = `https://your-domain.com/register/${registrationToken}?userId=${userId}`;
 
-  return registrationLink;
-}
+//   return registrationLink;
+// }
 
 registerListeners(app);
 
